@@ -46,6 +46,7 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: |
+            ${{ vars.DOCKERHUB_USERNAME}}/${{ vars.IMAGE_NAME }}:latest
             ${{ vars.DOCKERHUB_USERNAME}}/${{ vars.IMAGE_NAME }}:production
             ${{ vars.DOCKERHUB_USERNAME}}/${{ vars.IMAGE_NAME }}:production-${{ steps.meta.outputs.ts }}
             ${{ vars.DOCKERHUB_USERNAME}}/${{ vars.IMAGE_NAME }}:production-${{ steps.meta.outputs.sha }}
