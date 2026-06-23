@@ -1,10 +1,7 @@
-name: 'Commitlint'
+name: Commitlint
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_call:
 
 permissions:
   contents: read # to fetch code (actions/checkout)
@@ -14,10 +11,10 @@ jobs:
   commitlint:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v4
         with:
           node-version: 24
       - uses: nrwl/nx-set-shas@v5
