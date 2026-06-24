@@ -13,6 +13,7 @@ ENV PATH=/opt/app/node_modules/.bin:$PATH
 # ENV STRAPI_ADMIN_BACKEND_URL=${STRAPI_ADMIN_BACKEND_URL}
 ENV NODE_ENV=production
 RUN yarn build
+RUN yarn workspace getstarted build
 
 # Production stage
 FROM node:22-alpine
@@ -28,4 +29,4 @@ USER node
 EXPOSE 1337
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
   CMD wget --quiet --tries=1 --spider http://localhost:1337/_health || exit 1
-CMD ["yarn", "start"]
+CMD ["yarn", "workspace", "getstarted", "start"]
